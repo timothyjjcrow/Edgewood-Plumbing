@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet of the Week - Edgewood Plumbing</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/faviocon.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta
+      name="description"
+      content="Meet the Edgewood Plumbing Pet of the Week! A fun community feature from your local Redding plumbers."
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo-container">
+          <img
+            src="images/edgewood-plumbing-logo.webp"
+            alt="Edgewood Plumbing Logo"
+            class="logo"
+          />
+          <span class="company-name">Edgewood Plumbing</span>
+        </div>
+        <nav>
+          <button
+            class="menu-toggle"
+            id="mobile-menu"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+              <a href="pet-of-the-week.html" class="active">Pet of the Week</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="fade-in">Pet of the Week</h1>
+        <p class="fade-in delay-1">
+          Because even plumbers love furry (and scaly, and feathery) friends!
+        </p>
+      </div>
+    </section>
+
+    <section class="pet-feature reveal-section">
+      <div class="container">
+        <h2 class="fade-in">This Week's Star: Whiskers</h2>
+        <div class="pet-showcase">
+          <div class="pet-image-container slide-in slide-left">
+            <img
+              src="images/cat.webp"
+              alt="Whiskers the cat - Pet of the Week"
+              class="responsive-image pet-main-image tilt-effect pet-image"
+              onclick="return false;"
+            />
+          </div>
+          <div class="pet-bio slide-in slide-right">
+            <h3 class="highlight-text">Meet Whiskers!</h3>
+            <p><strong>Owner:</strong> The Johnson Family</p>
+            <p><strong>Favorite Toy:</strong> Anything with feathers</p>
+            <p>
+              <strong>Quirky Habit:</strong> Sits in the sink while we brush our
+              teeth
+            </p>
+            <p>
+              Whiskers is a 3-year-old rescue cat who has become the unofficial
+              supervisor of all plumbing work at the Johnson household. Whenever
+              we visit for a repair, Whiskers is right there inspecting our work
+              and making sure everything is done to the highest standard.
+              Despite being quite particular about her water dish, she's the
+              sweetest companion who loves to greet all visitors with a friendly
+              meow.
+            </p>
+            <div class="cta-container">
+              <a
+                href="mailto:edgewoodplumbing@gmail.com?subject=Pet of the Week Submission"
+                class="learn-more-btn"
+              >
+                <i class="fas fa-paw"></i> Submit Your Pet
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="past-pets reveal-section">
+      <div class="container">
+        <h2 class="fade-in">Past Pets of the Week</h2>
+        <p class="fade-in delay-1">
+          Check out some of our previous adorable features!
+        </p>
+        <div class="gallery-grid pet-gallery">
+          <div
+            class="gallery-item pet-gallery-item staggered-animation"
+            data-stagger-group="pets"
+          >
+            <div class="pet-img-wrapper">
+              <img
+                src="images/xena the dog.webp"
+                alt="Xena the dog"
+                class="float-animation pet-image"
+                onclick="return false;"
+              />
+            </div>
+            <p>Xena</p>
+            <span class="pet-description"
+              >A playful shepherd mix who loves water</span
+            >
+          </div>
+          <div
+            class="gallery-item pet-gallery-item staggered-animation"
+            data-stagger-group="pets"
+          >
+            <div class="pet-img-wrapper">
+              <img
+                src="images/cooper the dog.webp"
+                alt="Cooper the dog"
+                class="float-animation pet-image"
+                onclick="return false;"
+              />
+            </div>
+            <p>Cooper</p>
+            <span class="pet-description"
+              >The loyal guard dog who's actually a big softie</span
+            >
+          </div>
+          <!-- Add more past pets as needed -->
+        </div>
+      </div>
+    </section>
+
+    <section class="pet-submission-section reveal-section">
+      <div class="container">
+        <div class="submission-content scale-in">
+          <h2>Want to see your pet featured?</h2>
+          <p>
+            We love showcasing our customers' furry, feathery, and scaly
+            friends! To submit your pet for consideration:
+          </p>
+          <ul class="submission-steps">
+            <li>
+              <i class="fas fa-camera"></i> Take a clear, cute photo of your pet
+            </li>
+            <li>
+              <i class="fas fa-file-alt"></i> Write a short bio including your
+              pet's name, age, and a fun fact
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i> Email it to us with subject "Pet
+              of the Week Submission"
+            </li>
+          </ul>
+          <div class="cta-container">
+            <a
+              href="mailto:edgewoodplumbing@gmail.com?subject=Pet of the Week Submission"
+              class="learn-more-btn"
+            >
+              <i class="fas fa-paw"></i> Submit Your Pet
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo-contact">
+            <img
+              src="images/edgewood-plumbing-logo.webp"
+              alt="Edgewood Plumbing Logo"
+              class="footer-logo"
+            />
+            <p>
+              <strong>Edgewood Plumbing</strong><br />
+              Your Residential Plumbing Experts
+            </p>
+            <p>
+              3300 Bechelli Lane, Suite A<br />
+              Redding, CA 96002
+            </p>
+            <p>
+              <strong>Call Us:</strong>
+              <a href="tel:+15306050954">(530) 605-0954</a><br />
+              <strong>Email:</strong>
+              <a href="mailto:edgewoodplumbing@gmail.com"
+                >edgewoodplumbing@gmail.com</a
+              >
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="pet-of-the-week.html">Pet of the Week</a></li>
+              <li><a href="contact.html#estimate">Request an Estimate</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Connect With Us</h4>
+            <p>Serving: Redding, Anderson, Shasta Lake & More</p>
+            <div class="social-icons">
+              <a
+                href="https://www.facebook.com/edgewoodplumbing"
+                aria-label="Facebook"
+                target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/edgewoodplumbing"
+                aria-label="Instagram"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+            <p class="license-info">CA License # 959257</p>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            &copy; <span id="current-year"></span> Edgewood Plumbing. All Rights
+            Reserved. | <a href="contact.html">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
