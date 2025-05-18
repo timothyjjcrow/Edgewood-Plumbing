@@ -1822,27 +1822,27 @@ nav ul.nav-menu li a,
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
   padding: 40px;
   position: relative;
+  /* Add a fixed height to prevent container collapse during transitions */
+  min-height: 300px;
 }
 
 .testimonial-item {
   display: none;
   text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
 .testimonial-item.active {
   display: block;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .testimonial-quote {
@@ -2002,11 +2002,22 @@ nav ul.nav-menu li a,
 
   .testimonial-slider {
     padding: 25px 15px;
+    min-height: 340px; /* Slightly taller for mobile */
   }
 
   .testimonial-quote {
     font-size: 1em;
     padding: 0 15px;
+    line-height: 1.5;
+  }
+
+  .testimonial-author {
+    padding-top: 12px;
+    font-size: 0.9em;
+  }
+
+  .slider-controls {
+    margin-top: 15px;
   }
 }
 

@@ -328,35 +328,60 @@ const setupTestimonialSlider = () => {
   let currentIndex = 0;
   let interval;
   const intervalTime = 7000; // 7 seconds between auto-transitions
+  let isTransitioning = false;
 
-  // Function to show a specific testimonial with fade effect
+  // Function to show a specific testimonial with smooth fade effect
   const showTestimonial = (index) => {
-    // Hide all testimonials
-    testimonials.forEach((testimonial) => {
-      testimonial.classList.remove("active");
-    });
+    if (isTransitioning) return;
+    isTransitioning = true;
 
-    // Show the current testimonial after a short delay
+    // Get current active testimonial
+    const currentActive = testimonialContainer.querySelector(
+      ".testimonial-item.active"
+    );
+
+    // Hide current active testimonial (keep it displayed but start fade out)
+    if (currentActive) {
+      currentActive.style.opacity = "0";
+      currentActive.style.transform = "translateY(20px)";
+    }
+
+    // Wait for fade out transition
     setTimeout(() => {
+      // Remove active class from all testimonials
+      testimonials.forEach((testimonial) => {
+        testimonial.classList.remove("active");
+      });
+
+      // Add active class to selected testimonial
       testimonials[index].classList.add("active");
-    }, 300);
+
+      // Reset transition lock after animation completes
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 400); // Match transition duration in CSS
+    }, 400); // Match transition duration in CSS
   };
 
   // Initialize the slider
   testimonials.forEach((testimonial, i) => {
     if (i !== currentIndex) {
       testimonial.classList.remove("active");
+    } else {
+      testimonial.classList.add("active");
     }
   });
 
   // Function to go to next testimonial
   const nextTestimonial = () => {
+    if (isTransitioning) return;
     currentIndex = (currentIndex + 1) % testimonials.length;
     showTestimonial(currentIndex);
   };
 
   // Function to go to previous testimonial
   const prevTestimonial = () => {
+    if (isTransitioning) return;
     currentIndex =
       (currentIndex - 1 + testimonials.length) % testimonials.length;
     showTestimonial(currentIndex);
