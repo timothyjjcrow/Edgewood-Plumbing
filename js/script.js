@@ -313,119 +313,97 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Testimonial Slider (if added to HTML)
+// Testimonial Slider
 const setupTestimonialSlider = () => {
-  const testimonialContainer = document.querySelector(".testimonial-slider");
-  if (!testimonialContainer) return;
+  const slider = document.querySelector(".testimonial-slider");
+  if (!slider) return;
 
-  const testimonials =
-    testimonialContainer.querySelectorAll(".testimonial-item");
-  const prevButton = testimonialContainer.querySelector(".slider-prev");
-  const nextButton = testimonialContainer.querySelector(".slider-next");
+  const testimonials = slider.querySelectorAll(".testimonial-item");
+  const prevBtn = slider.querySelector(".slider-prev");
+  const nextBtn = slider.querySelector(".slider-next");
 
   if (testimonials.length <= 1) return;
 
   let currentIndex = 0;
-  let interval;
-  const intervalTime = 7000; // 7 seconds between auto-transitions
-  let isTransitioning = false;
+  let autoSlideInterval;
+  const autoSlideDelay = 7000;
 
-  // Function to show a specific testimonial with smooth fade effect
-  const showTestimonial = (index) => {
-    if (isTransitioning) return;
-    isTransitioning = true;
-
-    // Get current active testimonial
-    const currentActive = testimonialContainer.querySelector(
-      ".testimonial-item.active"
-    );
-
-    // Hide current active testimonial (keep it displayed but start fade out)
-    if (currentActive) {
-      currentActive.style.opacity = "0";
-      currentActive.style.transform = "translateY(20px)";
-    }
-
-    // Wait for fade out transition
-    setTimeout(() => {
-      // Remove active class from all testimonials
-      testimonials.forEach((testimonial) => {
-        testimonial.classList.remove("active");
-      });
-
-      // Add active class to selected testimonial
-      testimonials[index].classList.add("active");
-
-      // Reset transition lock after animation completes
-      setTimeout(() => {
-        isTransitioning = false;
-      }, 400); // Match transition duration in CSS
-    }, 400); // Match transition duration in CSS
+  // Initialize slider
+  const initSlider = () => {
+    // Set initial state
+    testimonials.forEach((item, index) => {
+      if (index === 0) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
   };
+
+  // Go to specified slide
+  const goToSlide = (index) => {
+    // Remove active class from all testimonials
+    testimonials.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // Add active class to current testimonial
+    testimonials[index].classList.add("active");
+
+    // Update current index
+    currentIndex = index;
+  };
+
+  // Previous slide
+  const prevSlide = () => {
+    const newIndex =
+      (currentIndex - 1 + testimonials.length) % testimonials.length;
+    goToSlide(newIndex);
+  };
+
+  // Next slide
+  const nextSlide = () => {
+    const newIndex = (currentIndex + 1) % testimonials.length;
+    goToSlide(newIndex);
+  };
+
+  // Auto slide
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+  };
+
+  const stopAutoSlide = () => {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
+  };
+
+  // Event listeners
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startAutoSlide(); // Reset the auto slide timer
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startAutoSlide(); // Reset the auto slide timer
+    });
+  }
+
+  // Pause auto slide on hover
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
 
   // Initialize the slider
-  testimonials.forEach((testimonial, i) => {
-    if (i !== currentIndex) {
-      testimonial.classList.remove("active");
-    } else {
-      testimonial.classList.add("active");
-    }
-  });
-
-  // Function to go to next testimonial
-  const nextTestimonial = () => {
-    if (isTransitioning) return;
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    showTestimonial(currentIndex);
-  };
-
-  // Function to go to previous testimonial
-  const prevTestimonial = () => {
-    if (isTransitioning) return;
-    currentIndex =
-      (currentIndex - 1 + testimonials.length) % testimonials.length;
-    showTestimonial(currentIndex);
-  };
-
-  // Previous button click
-  if (prevButton) {
-    prevButton.addEventListener("click", () => {
-      clearInterval(interval);
-      prevTestimonial();
-      startAutoSlide();
-    });
-  }
-
-  // Next button click
-  if (nextButton) {
-    nextButton.addEventListener("click", () => {
-      clearInterval(interval);
-      nextTestimonial();
-      startAutoSlide();
-    });
-  }
-
-  // Function to start auto slide
-  const startAutoSlide = () => {
-    clearInterval(interval);
-    interval = setInterval(nextTestimonial, intervalTime);
-  };
-
-  // Start auto-slide initially
+  initSlider();
   startAutoSlide();
-
-  // Pause auto-slide on hover
-  testimonialContainer.addEventListener("mouseenter", () => {
-    clearInterval(interval);
-  });
-
-  // Resume auto-slide when mouse leaves
-  testimonialContainer.addEventListener("mouseleave", () => {
-    startAutoSlide();
-  });
 };
 
-// Call testimonial slider setup when DOM is loaded
+// Run setup when DOM is loaded
 document.addEventListener("DOMContentLoaded", setupTestimonialSlider);
 
 // Back to top button
