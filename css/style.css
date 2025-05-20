@@ -2601,6 +2601,7 @@ nav ul.nav-menu li a,
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .facebook-icon i {
@@ -2610,6 +2611,7 @@ nav ul.nav-menu li a,
 
 .reviewer-info {
   flex-grow: 1;
+  padding-right: 10px;
 }
 
 .reviewer-name {
@@ -2626,6 +2628,7 @@ nav ul.nav-menu li a,
 
 .review-rating {
   display: flex;
+  flex-shrink: 0;
 }
 
 .review-rating i {
@@ -2640,18 +2643,20 @@ nav ul.nav-menu li a,
 .review-content p {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #444;
 }
 
 .facebook-review-link {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .facebook-review-link .cta-button-secondary {
   background-color: #4267b2;
   border-color: #4267b2;
+  padding: 12px 25px;
+  font-size: 1rem;
 }
 
 .facebook-review-link .cta-button-secondary:hover {
@@ -2663,15 +2668,25 @@ nav ul.nav-menu li a,
 @media (max-width: 1024px) {
   .facebook-review-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .facebook-review-card {
+    padding: 15px;
   }
 }
 
 @media (max-width: 767px) {
   .facebook-review-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .facebook-reviews-section {
-    padding: 50px 0;
+    padding: 40px 0;
+  }
+
+  .review-content p {
+    font-size: 0.9rem;
   }
 }
