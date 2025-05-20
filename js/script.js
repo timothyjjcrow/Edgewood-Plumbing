@@ -411,6 +411,39 @@ const setupFacebookReviews = () => {
   reviewCards.forEach((card, index) => {
     card.style.transitionDelay = `${0.1 * index}s`;
   });
+
+  // Add event listeners to ensure spacing after animation
+  reviewCards.forEach((card) => {
+    card.addEventListener("transitionend", function (e) {
+      // Only handle the transform transition end
+      if (e.propertyName === "transform") {
+        // Ensure proper spacing after animation
+        this.style.margin = "5px";
+      }
+    });
+  });
+
+  // Observer for adding slide-active class
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("slide-active");
+          }, 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    }
+  );
+
+  // Observe each review card
+  reviewCards.forEach((card) => {
+    observer.observe(card);
+  });
 };
 
 // Initialization
