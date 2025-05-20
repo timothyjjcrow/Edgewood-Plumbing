@@ -2567,7 +2567,8 @@ nav ul.nav-menu li a,
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 35px;
-  margin-bottom: 40px;
+  margin-bottom: 50px; /* Increased from 40px */
+  align-items: stretch; /* Added to ensure cards are equal height */
 }
 
 .facebook-review-card {
@@ -2651,7 +2652,7 @@ nav ul.nav-menu li a,
 
 .facebook-review-link {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 40px; /* Increased from 30px */
 }
 
 .facebook-review-link .cta-button-secondary {
