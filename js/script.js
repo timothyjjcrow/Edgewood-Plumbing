@@ -403,8 +403,21 @@ const setupTestimonialSlider = () => {
   startAutoSlide();
 };
 
-// Run setup when DOM is loaded
-document.addEventListener("DOMContentLoaded", setupTestimonialSlider);
+// Facebook Reviews Animation
+const setupFacebookReviews = () => {
+  const reviewCards = document.querySelectorAll(".facebook-review-card");
+
+  // Add staggered delay to each card for a cascading effect
+  reviewCards.forEach((card, index) => {
+    card.style.transitionDelay = `${0.1 * index}s`;
+  });
+};
+
+// Initialization
+document.addEventListener("DOMContentLoaded", () => {
+  setupTestimonialSlider();
+  setupFacebookReviews();
+});
 
 // Back to top button
 const createBackToTopButton = () => {
